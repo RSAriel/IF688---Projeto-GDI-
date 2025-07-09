@@ -1,113 +1,140 @@
--- PROFESSORES
-INSERT INTO Professor (CPF, Nome, Materia, Data_Ingresso) VALUES
-('11111111111', 'Minerva McGonagall', 'Transfiguração', TO_DATE('01/09/1970', 'DD/MM/YYYY'));
-INSERT INTO Professor (CPF, Nome, Materia, Data_Ingresso) VALUES
-('22222222222', 'Severo Snape', 'Poções', TO_DATE('10/01/1980', 'DD/MM/YYYY'));
-INSERT INTO Professor (CPF, Nome, Materia, Data_Ingresso) VALUES
-('33333333333', 'Filius Flitwick', 'Feitiços', TO_DATE('15/02/1975', 'DD/MM/YYYY'));
-INSERT INTO Professor (CPF, Nome, Materia, Data_Ingresso) VALUES
-('44444444444', 'Pomona Sprout', 'Herbologia', TO_DATE('20/03/1978', 'DD/MM/YYYY'));
+-- Criação da tabela Professor
+-- Relacionamento "Lidera" com tabela Casa através do CPF_Prof (1 para 1), 
+CREATE TABLE Professor (
+    CPF VARCHAR2(11) PRIMARY KEY,
+    Nome VARCHAR2(100),
+    Materia VARCHAR2(100),
+    Data_Ingresso DATE
+);
 
--- CASAS
-INSERT INTO Casa (ID, Nome, Brasao, Nome_Fundador, Nascimento_Fundador, CPF_Prof) VALUES
-(1, 'Grifinória', 'Leão', 'Godric Gryffindor', TO_DATE('01/01/1000', 'DD/MM/YYYY'), '11111111111');
-INSERT INTO Casa (ID, Nome, Brasao, Nome_Fundador, Nascimento_Fundador, CPF_Prof) VALUES
-(2, 'Sonserina', 'Serpente', 'Salazar Slytherin', TO_DATE('15/06/0995', 'DD/MM/YYYY'), '22222222222');
-INSERT INTO Casa (ID, Nome, Brasao, Nome_Fundador, Nascimento_Fundador, CPF_Prof) VALUES
-(3, 'Corvinal', 'Águia', 'Rowena Ravenclaw', TO_DATE('10/03/0990', 'DD/MM/YYYY'), '33333333333');
-INSERT INTO Casa (ID, Nome, Brasao, Nome_Fundador, Nascimento_Fundador, CPF_Prof) VALUES
-(4, 'Lufa-Lufa', 'Texugo', 'Helga Hufflepuff', TO_DATE('05/08/0985', 'DD/MM/YYYY'), '44444444444');
+-- Criação da tabela Casa
+-- Relacionamento "Lidera" com tabela Professor através do CPF_Prof como chave estrangeira (1 para 1), 
+-- Possui um atributo multivalorado Cores, que é uma tabela separada
+CREATE TABLE Casa (
+    ID INT PRIMARY KEY,
+    Nome VARCHAR2(100) NOT NULL,
+    Brasao VARCHAR2(100),
+    Nome_Fundador VARCHAR2(100),
+    Nascimento_Fundador DATE,
+    CPF_Prof VARCHAR2(11),
+    FOREIGN KEY (CPF_Prof) REFERENCES Professor(CPF)
+);
 
--- CORES
-INSERT INTO Cores (ID, Cor) VALUES (1, 'Vermelho');
-INSERT INTO Cores (ID, Cor) VALUES (1, 'Dourado');
-INSERT INTO Cores (ID, Cor) VALUES (2, 'Verde');
-INSERT INTO Cores (ID, Cor) VALUES (2, 'Prata');
-INSERT INTO Cores (ID, Cor) VALUES (3, 'Azul');
-INSERT INTO Cores (ID, Cor) VALUES (3, 'Bronze');
-INSERT INTO Cores (ID, Cor) VALUES (4, 'Amarelo');
-INSERT INTO Cores (ID, Cor) VALUES (4, 'Preto');
+--Criação da tabela Cores (Atributo Multivalorado), está associado a Casa pela chave estrangeira ID
+CREATE TABLE Cores (
+    ID INT,
+    Cor VARCHAR2(50),
+    PRIMARY KEY (ID, Cor),
+    FOREIGN KEY (ID) REFERENCES Casa(ID)
+);
 
--- FANTASMAS
-INSERT INTO Fantasma (CPM, Nome, Data_Obito) VALUES ('90000000001', 'Nick Quase Sem Cabeça', TO_DATE('31/10/1492', 'DD/MM/YYYY'));
-INSERT INTO Fantasma (CPM, Nome, Data_Obito) VALUES ('90000000002', 'Barão Sangrento', TO_DATE('20/11/1600', 'DD/MM/YYYY'));
-INSERT INTO Fantasma (CPM, Nome, Data_Obito) VALUES ('90000000003', 'Dama Cinzenta', TO_DATE('14/09/1400', 'DD/MM/YYYY'));
-INSERT INTO Fantasma (CPM, Nome, Data_Obito) VALUES ('90000000004', 'Frei Gorducho', TO_DATE('22/04/1300', 'DD/MM/YYYY'));
+-- Criação da tabela Fantasma
+CREATE TABLE Fantasma (
+    CPM VARCHAR2(11) PRIMARY KEY,
+    Nome VARCHAR2(100),
+    Data_Obito DATE
+);
 
--- ASSOMBRA
-INSERT INTO Assombra (ID, CPM) VALUES (1, '90000000001');
-INSERT INTO Assombra (ID, CPM) VALUES (2, '90000000002');
-INSERT INTO Assombra (ID, CPM) VALUES (3, '90000000003');
-INSERT INTO Assombra (ID, CPM) VALUES (4, '90000000004');
+-- Criação da tabela Assombra, relacionamento M:N entre Casa e Fantasma)
+CREATE TABLE Assombra (
+    ID INT,
+    CPM VARCHAR2(11),
+    PRIMARY KEY (ID, CPM),
+    FOREIGN KEY (ID) REFERENCES Casa(ID),
+    FOREIGN KEY (CPM) REFERENCES Fantasma(CPM)
+);
 
--- SALAS
-INSERT INTO Sala (ID, Numero_Cadeiras) VALUES (101, 30);
-INSERT INTO Sala (ID, Numero_Cadeiras) VALUES (102, 25);
-INSERT INTO Sala (ID, Numero_Cadeiras) VALUES (103, 40);
-INSERT INTO Sala (ID, Numero_Cadeiras) VALUES (104, 20);
+-- Criação da tabela Sala
+CREATE TABLE Sala (
+    ID INT PRIMARY KEY,
+    Numero_Cadeiras INT
+);
 
--- ESTUDANTES
-INSERT INTO Estudante (CPF, Nome, Sangue, Ano_Ingresso, CPF_Monitor, QI, Companheirismo, Ambicao, Heroismo, ID_Casa) VALUES
-('55555555555', 'Harry Potter', 'Mestiço', 1991, NULL, 120, 85, 50, 95, 1);
-INSERT INTO Estudante (CPF, Nome, Sangue, Ano_Ingresso, CPF_Monitor, QI, Companheirismo, Ambicao, Heroismo, ID_Casa) VALUES
-('66666666666', 'Hermione Granger', 'Nascida Trouxa', 1991, '55555555555', 150, 90, 60, 80, 1);
-INSERT INTO Estudante (CPF, Nome, Sangue, Ano_Ingresso, CPF_Monitor, QI, Companheirismo, Ambicao, Heroismo, ID_Casa) VALUES
-('77777777777', 'Draco Malfoy', 'Puro', 1991, NULL, 110, 40, 95, 30, 2);
-INSERT INTO Estudante (CPF, Nome, Sangue, Ano_Ingresso, CPF_Monitor, QI, Companheirismo, Ambicao, Heroismo, ID_Casa) VALUES
-('88888888888', 'Luna Lovegood', 'Puro', 1992, NULL, 140, 95, 50, 75, 3);
-INSERT INTO Estudante (CPF, Nome, Sangue, Ano_Ingresso, CPF_Monitor, QI, Companheirismo, Ambicao, Heroismo, ID_Casa) VALUES
-('99999999999', 'Cedrico Diggory', 'Puro', 1990, NULL, 125, 80, 70, 85, 4);
-INSERT INTO Estudante (CPF, Nome, Sangue, Ano_Ingresso, CPF_Monitor, QI, Companheirismo, Ambicao, Heroismo, ID_Casa) VALUES
-('10101010101', 'Cho Chang', 'Mestiço', 1990, '88888888888', 130, 70, 55, 60, 3);
-INSERT INTO Estudante (CPF, Nome, Sangue, Ano_Ingresso, CPF_Monitor, QI, Companheirismo, Ambicao, Heroismo, ID_Casa) VALUES
-('12121212121', 'Millicent Bulstrode', 'Puro', 1991, '77777777777', 105, 50, 85, 40, 2);
-INSERT INTO Estudante (CPF, Nome, Sangue, Ano_Ingresso, CPF_Monitor, QI, Companheirismo, Ambicao, Heroismo, ID_Casa) VALUES
-('13131313131', 'Susan Bones', 'Mestiço', 1991, '99999999999', 115, 75, 65, 60, 4);
+-- Criação da tabela Estudante
+-- Está relacionada com a tabela Casa através da chave estrangeira ID_Casa (1 para N)
+-- E com a tabela Estudante(Monitor) através da chave estrangeira CPF_Monitor (Auto relacionamento 1 para N)
+CREATE TABLE Estudante (
+    CPF VARCHAR2(11) PRIMARY KEY,
+    Nome VARCHAR2(100),
+    Sangue VARCHAR2(20),
+    Ano_Ingresso INT,
+    CPF_Monitor VARCHAR2(11),
+    QI INT,
+    Companheirismo INT,
+    Ambicao INT,
+    Heroismo INT,
+    ID_Casa INT NOT NULL,
+    FOREIGN KEY (CPF_Monitor) REFERENCES Estudante(CPF),
+    FOREIGN KEY (ID_Casa) REFERENCES Casa(ID)
+);
 
--- VARINHAS
-INSERT INTO Varinha (CPF, Nome, Poder) VALUES ('55555555555', 'Azevinho e Pena de Fênix', 95);
-INSERT INTO Varinha (CPF, Nome, Poder) VALUES ('66666666666', 'Videira e Fibra de Coração de Dragão', 90);
-INSERT INTO Varinha (CPF, Nome, Poder) VALUES ('77777777777', 'Espinheiro e Corda de Veela', 88);
-INSERT INTO Varinha (CPF, Nome, Poder) VALUES ('88888888888', 'Cerejeira e Pêlo de Unicórnio', 87);
-INSERT INTO Varinha (CPF, Nome, Poder) VALUES ('99999999999', 'Freixo e Pena de Hipogrifo', 89);
-INSERT INTO Varinha (CPF, Nome, Poder) VALUES ('10101010101', 'Ébano e Corda de Veela', 86);
-INSERT INTO Varinha (CPF, Nome, Poder) VALUES ('12121212121', 'Teixo e Escama de Basilisco', 84);
-INSERT INTO Varinha (CPF, Nome, Poder) VALUES ('13131313131', 'Carvalho e Pêlo de Trasgo', 82);
-
---Ensina
-INSERT INTO Ensina (CPF_Professor, CPF_Aluno, Hora_Aula, ID_Sala) VALUES
-('11111111111', '55555555555', TO_TIMESTAMP('08:00', 'HH24:MI'), 101),
-('11111111111', '66666666666', TO_TIMESTAMP('08:00', 'HH24:MI'), 101),
-('22222222222', '77777777777', TO_TIMESTAMP('09:00', 'HH24:MI'), 102),
-('22222222222', '12121212121', TO_TIMESTAMP('09:00', 'HH24:MI'), 102),
-('33333333333', '88888888888', TO_TIMESTAMP('10:00', 'HH24:MI'), 103),
-('33333333333', '10101010101', TO_TIMESTAMP('10:00', 'HH24:MI'), 103),
-('44444444444', '99999999999', TO_TIMESTAMP('11:00', 'HH24:MI'), 104),
-('44444444444', '13131313131', TO_TIMESTAMP('11:00', 'HH24:MI'), 104);
-
---Torneio
-INSERT INTO Torneio (ID, Titulo, Inicio, Fim) VALUES
-(1, 'Mundial de Corrida de Vassouras', TO_DATE('01/10/1994', 'DD/MM/YYYY'), TO_DATE('24/06/1997', 'DD/MM/YYYY')),
-(2, 'Copa de Quadribol Escolar', TO_DATE('01/09/1993', 'DD/MM/YYYY'), TO_DATE('30/06/1994', 'DD/MM/YYYY')),
-(3, 'Corrida de Vassouras Anual', TO_DATE('05/05/1995', 'DD/MM/YYYY'), TO_DATE('10/05/1995', 'DD/MM/YYYY'));
+--Criação da tabela Varinha (1 para N)
+-- Está relacionada com a tabela Estudante através da chave estrangeira CPF, entidade fraca com chave primária composta.
+CREATE TABLE Varinha (
+    CPF VARCHAR2(11),
+    Nome VARCHAR2(100),
+    Poder INT,
+    PRIMARY KEY (CPF, Nome),
+    FOREIGN KEY (CPF) REFERENCES Estudante(CPF)
+);
 
 
---Participa
-INSERT INTO Participa (CPF_Participante, ID_Torneio, Data_Inscricao, Pontuacao, Infracao, Forma_Selecao) VALUES
-('55555555555', 1, TO_DATE('15/09/1994', 'DD/MM/YYYY'), 85, FALSE, 'Indicação'),
-('99999999999', 1, TO_DATE('16/09/1994', 'DD/MM/YYYY'), 90, FALSE, 'Seleção da Taça'),
-('77777777777', 2, TO_DATE('10/08/1993', 'DD/MM/YYYY'), 95, FALSE, 'Capitão'),
-('88888888888', 2, TO_DATE('10/08/1993', 'DD/MM/YYYY'), 87, FALSE, 'Treinamento'),
-('13131313131', 3, TO_DATE('01/05/1995', 'DD/MM/YYYY'), 80, FALSE, 'Provas Internas'),
-('10101010101', 3, TO_DATE('01/05/1995', 'DD/MM/YYYY'), 78, TRUE, 'Sorteio');
+--Criação da tabela Ensina (3-ário )
+-- Está relacionada com as tabelas Professor, Estudante e Sala através das respectivas chaves estrangeiras
+-- A chave primária é composta por CPF_Professor, CPF_Aluno e Hora_Aula
+-- Como ID_sala é o lado 1, não precisa ser parte da chave primária mas tem que ser não nulo.
+-- Possui Hora_aula como atributo discriminador do relacionamento
+CREATE TABLE Ensina (
+    CPF_Professor VARCHAR2(11),
+    CPF_Aluno VARCHAR2(11),
+    Hora_Aula TIMESTAMP,
+    ID_Sala INT NOT NULL,
+    PRIMARY KEY (CPF_Professor, CPF_Aluno, Hora_Aula),
+    FOREIGN KEY (CPF_Professor) REFERENCES Professor(CPF),
+    FOREIGN KEY (CPF_Aluno) REFERENCES Estudante(CPF),
+    FOREIGN KEY (ID_Sala) REFERENCES Sala(ID)
+);
 
+-- Tabela: Torneio
+-- Superentidade com Herança para Quadribol e Corrida_Vassouras
+CREATE TABLE Torneio (
+    ID INT PRIMARY KEY,
+    Titulo VARCHAR2(100),
+    Inicio DATE,
+    Fim DATE
+);
 
---Quadribol
-INSERT INTO Quadribol (ID, Casa_Vencedora, Pomo_de_Ouro) VALUES
-(2, 'Grifinória', TRUE);
+-- Tabela: Participa (M:N)
+-- Entidade associativa entre  Estudante e Torneio, com atributos adicionais
+-- CPF_Participante e ID_Torneio como chave primária composta
+CREATE TABLE Participa (
+    CPF_Participante VARCHAR2(11),
+    ID_Torneio INT,
+    Data_Inscricao DATE,
+    Pontuacao INT,
+    Infracao NUMBER(1) CHECK (Infracao IN (0, 1)),
+    Forma_Selecao VARCHAR2(100),
+    PRIMARY KEY (CPF_Participante, ID_Torneio),
+    FOREIGN KEY (CPF_Participante) REFERENCES Estudante(CPF),
+    FOREIGN KEY (ID_Torneio) REFERENCES Torneio(ID)
+);
 
+-- Tabela: Quadribol
+-- Subentidade de Torneio
+CREATE TABLE Quadribol (
+    ID INT PRIMARY KEY,
+    Casa_Vencedora VARCHAR2(100),
+    Pomo_de_Ouro CHAR(1) CHECK (Pomo_de_Ouro IN (0, 1)),
+    FOREIGN KEY (ID) REFERENCES Torneio(ID)
+);
 
-INSERT INTO Corrida_Vassouras (ID, Vencedor, Distancia, Tipo_Trajeto, Nivel_Perigo) VALUES
-(1, '99999999999', 5.2, 'Montanhas da Noruega', 2);
-(3, '13131313131', 3.5, 'Floresta Proibida', 5),
-
+-- Corrida: Vassouras
+-- Subentidade de Torneio
+CREATE TABLE Corrida_Vassouras (
+    ID INT PRIMARY KEY,
+    Vencedor INT,
+    Distancia FLOAT,
+    Tipo_Trajeto VARCHAR2(100),
+    Nivel_Perigo INT,
+    FOREIGN KEY (ID) REFERENCES Torneio(ID)
+);
