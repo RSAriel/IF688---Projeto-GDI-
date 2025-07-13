@@ -81,3 +81,83 @@ WHERE Nome IN (
 SELECT CPF, Nome FROM Professor
 UNION
 SELECT CPF, Nome FROM Estudante;
+
+-- procedimento com SQL embutida e parâmetro
+CREATE OR REPLACE PROCEDURE estatisticas_casa (
+    p_id_casa IN NUMBER,
+    p_total_estudantes OUT NUMBER,
+    p_media_qi OUT NUMBER,
+    p_heroismo_max OUT NUMBER
+)
+AS
+BEGIN
+    -- SQL para contar estudantes
+    SELECT COUNT(*) INTO p_total_estudantes
+    FROM Estudante
+    WHERE ID_Casa = p_id_casa;
+    
+    -- SQL para calcular média de QI
+    SELECT AVG(QI) INTO p_media_qi
+    FROM Estudante
+    WHERE ID_Casa = p_id_casa;
+    
+    -- SQL para encontrar máximo heroismo
+    SELECT MAX(Heroismo) INTO p_heroismo_max
+    FROM Estudante
+    WHERE ID_Casa = p_id_casa;
+END estatisticas_casa;
+/
+
+DECLARE
+    v_total NUMBER;
+    v_media_qi NUMBER;
+    v_max_heroismo NUMBER;
+BEGIN
+    estatisticas_casa(1, v_total, v_media_qi, v_max_heroismo);
+    
+    DBMS_OUTPUT.PUT_LINE('Total estudantes: ' || v_total);
+    DBMS_OUTPUT.PUT_LINE('Média QI: ' || v_media_qi);
+    DBMS_OUTPUT.PUT_LINE('Máximo heroismo: ' || v_max_heroismo);
+END;
+/
+
+--função que calcula a pontuação média de uma casa em torneios
+CREATE OR REPLACE FUNCTION calcular_media_pontuacao_casa (
+    p_id_casa IN NUMBER
+) RETURN NUMBER
+AS
+    v_media_pontuacao NUMBER;
+BEGIN
+    -- SQL embutida na função
+    SELECT AVG(p.Pontuacao) INTO v_media_pontuacao
+    FROM Participa p
+    JOIN Estudante e ON p.CPF_Participante = e.CPF
+    WHERE e.ID_Casa = p_id_casa;
+    
+    -- Retorna o valor calculado
+    RETURN NVL(v_media_pontuacao, 0); 
+END calcular_media_pontuacao_casa;
+/
+
+-- Chamando a função em uma consulta SQL
+SELECT 
+    c.Nome AS Casa,
+    calcular_media_pontuacao_casa(c.ID) AS Media_Pontuacao
+FROM Casa c;
+
+-- Trigger que valida o ano de ingresso antes de inserir
+CREATE OR REPLACE TRIGGER trg_valida_ano_ingresso
+BEFORE INSERT OR UPDATE OF Ano_Ingresso ON Estudante
+FOR EACH ROW
+BEGIN
+    -- Valida que o ano de ingresso não é futuro
+    IF :NEW.Ano_Ingresso > EXTRACT(YEAR FROM SYSDATE) THEN
+        RAISE_APPLICATION_ERROR(-20001, 'Ano de ingresso não pode ser no futuro');
+    END IF;
+    
+    -- Valida que o ano de ingresso é razoável (após 1900)
+    IF :NEW.Ano_Ingresso < 1900 THEN
+        RAISE_APPLICATION_ERROR(-20002, 'Ano de ingresso deve ser após 1900');
+    END IF;
+END;
+/
