@@ -1,0 +1,54 @@
+[
+  {
+    "ID": 1,
+    "Nome": "Grifinória",
+    "Brasao": "Leão",
+    "Nome_Fundador": "Godric Gryffindor",
+    "Nascimento_Fundador": "1000-01-01",
+    "CPF_Prof": "11111111111",
+    "estudantes": [
+      "55555555555",
+      "66666666666",
+      "15151515151",
+      "16161616161"
+    ]
+  },
+  {
+    "ID": 2,
+    "Nome": "Sonserina",
+    "Brasao": "Serpente",
+    "Nome_Fundador": "Salazar Slytherin",
+    "Nascimento_Fundador": "0995-06-15",
+    "CPF_Prof": "22222222222",
+    "estudantes": [
+      "77777777777",
+      "12121212121",
+      "17171717171"
+    ]
+  },
+  {
+    "ID": 3,
+    "Nome": "Corvinal",
+    "Brasao": "Águia",
+    "Nome_Fundador": "Rowena Ravenclaw",
+    "Nascimento_Fundador": "0990-03-10",
+    "CPF_Prof": "33333333333",
+    "estudantes": [
+      "88888888888",
+      "10101010101"
+    ]
+  },
+  {
+    "ID": 4,
+    "Nome": "Lufa-Lufa",
+    "Brasao": "Texugo",
+    "Nome_Fundador": "Helga Hufflepuff",
+    "Nascimento_Fundador": "0985-08-05",
+    "CPF_Prof": "44444444444",
+    "estudantes": [
+      "99999999999",
+      "13131313131",
+      "14141414141"
+    ]
+  }
+]

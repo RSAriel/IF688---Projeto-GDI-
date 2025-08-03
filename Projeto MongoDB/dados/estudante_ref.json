@@ -1,0 +1,62 @@
+[
+  {
+    "cpf": "55555555555",
+    "nome": "Harry Potter",
+    "id_casa": 1
+  },
+  {
+    "cpf": "66666666666",
+    "nome": "Hermione Granger",
+    "id_casa": 1
+  },
+  {
+    "cpf": "77777777777",
+    "nome": "Draco Malfoy",
+    "id_casa": 2
+  },
+  {
+    "cpf": "88888888888",
+    "nome": "Luna Lovegood",
+    "id_casa": 3
+  },
+  {
+    "cpf": "99999999999",
+    "nome": "Cedrico Diggory",
+    "id_casa": 4
+  },
+  {
+    "cpf": "10101010101",
+    "nome": "Cho Chang",
+    "id_casa": 3
+  },
+  {
+    "cpf": "12121212121",
+    "nome": "Millicent Bulstrode",
+    "id_casa": 2
+  },
+  {
+    "cpf": "13131313131",
+    "nome": "Susan Bones",
+    "id_casa": 4
+  },
+  {
+    "cpf": "14141414141",
+    "nome": "Neville Longbottom",
+    "id_casa": 4
+  },
+  {
+    "cpf": "15151515151",
+    "nome": "Fred Weasley",
+    "id_casa": 1
+  },
+  {
+    "cpf": "16161616161",
+    "nome": "George Weasley",
+    "id_casa": 1
+  },
+  {
+    "cpf": "17171717171",
+    "nome": "Pansy Parkinson",
+    "id_casa": 2
+  }
+]

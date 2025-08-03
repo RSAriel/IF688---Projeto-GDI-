@@ -1,0 +1,90 @@
+[
+  {
+    "ID": 1,
+    "Nome": "Grifinória",
+    "Brasao": "Leão",
+    "Nome_Fundador": "Godric Gryffindor",
+    "Nascimento_Fundador": "1000-01-01",
+    "CPF_Prof": "11111111111",
+    "estudantes": [
+      {
+        "cpf": "55555555555",
+        "nome": "Harry Potter"
+      },
+      {
+        "cpf": "66666666666",
+        "nome": "Hermione Granger"
+      },
+      {
+        "cpf": "15151515151",
+        "nome": "Fred Weasley"
+      },
+      {
+        "cpf": "16161616161",
+        "nome": "George Weasley"
+      }
+    ]
+  },
+  {
+    "ID": 2,
+    "Nome": "Sonserina",
+    "Brasao": "Serpente",
+    "Nome_Fundador": "Salazar Slytherin",
+    "Nascimento_Fundador": "0995-06-15",
+    "CPF_Prof": "22222222222",
+    "estudantes": [
+      {
+        "cpf": "77777777777",
+        "nome": "Draco Malfoy"
+      },
+      {
+        "cpf": "12121212121",
+        "nome": "Millicent Bulstrode"
+      },
+      {
+        "cpf": "17171717171",
+        "nome": "Pansy Parkinson"
+      }
+    ]
+  },
+  {
+    "ID": 3,
+    "Nome": "Corvinal",
+    "Brasao": "Águia",
+    "Nome_Fundador": "Rowena Ravenclaw",
+    "Nascimento_Fundador": "0990-03-10",
+    "CPF_Prof": "33333333333",
+    "estudantes": [
+      {
+        "cpf": "88888888888",
+        "nome": "Luna Lovegood"
+      },
+      {
+        "cpf": "10101010101",
+        "nome": "Cho Chang"
+      }
+    ]
+  },
+  {
+    "ID": 4,
+    "Nome": "Lufa-Lufa",
+    "Brasao": "Texugo",
+    "Nome_Fundador": "Helga Hufflepuff",
+    "Nascimento_Fundador": "0985-08-05",
+    "CPF_Prof": "44444444444",
+    "estudantes": [
+      {
+        "cpf": "99999999999",
+        "nome": "Cedrico Diggory"
+      },
+      {
+        "cpf": "13131313131",
+        "nome": "Susan Bones"
+      },
+      {
+        "cpf": "14141414141",
+        "nome": "Neville Longbottom"
+      }
+    ]
+  }
+]

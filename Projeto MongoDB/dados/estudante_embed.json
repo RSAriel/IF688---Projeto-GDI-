@@ -1,0 +1,230 @@
+[
+  {
+    "cpf": "55555555555",
+    "nome": "Harry Potter",
+    "sangue": "Mestiço",
+    "ano_ingresso": 1991,
+    "cpf_monitor": null,
+    "qi": 120,
+    "companheirismo": 85,
+    "ambicao": 50,
+    "heroismo": 95,
+    "casa": {
+      "ID": 1,
+      "Nome": "Grifinória",
+      "Brasao": "Leão",
+      "Nome_Fundador": "Godric Gryffindor",
+      "Nascimento_Fundador": "1000-01-01",
+      "CPF_Prof": "11111111111"
+    }
+  },
+  {
+    "cpf": "66666666666",
+    "nome": "Hermione Granger",
+    "sangue": "Nascida Trouxa",
+    "ano_ingresso": 1991,
+    "cpf_monitor": "55555555555",
+    "qi": 150,
+    "companheirismo": 90,
+    "ambicao": 60,
+    "heroismo": 80,
+    "casa": {
+      "ID": 1,
+      "Nome": "Grifinória",
+      "Brasao": "Leão",
+      "Nome_Fundador": "Godric Gryffindor",
+      "Nascimento_Fundador": "1000-01-01",
+      "CPF_Prof": "11111111111"
+    }
+  },
+  {
+    "cpf": "77777777777",
+    "nome": "Draco Malfoy",
+    "sangue": "Puro",
+    "ano_ingresso": 1991,
+    "cpf_monitor": null,
+    "qi": 110,
+    "companheirismo": 40,
+    "ambicao": 95,
+    "heroismo": 30,
+    "casa": {
+      "ID": 2,
+      "Nome": "Sonserina",
+      "Brasao": "Serpente",
+      "Nome_Fundador": "Salazar Slytherin",
+      "Nascimento_Fundador": "0995-06-15",
+      "CPF_Prof": "22222222222"
+    }
+  },
+  {
+    "cpf": "88888888888",
+    "nome": "Luna Lovegood",
+    "sangue": "Puro",
+    "ano_ingresso": 1992,
+    "cpf_monitor": null,
+    "qi": 140,
+    "companheirismo": 95,
+    "ambicao": 50,
+    "heroismo": 75,
+    "casa": {
+      "ID": 3,
+      "Nome": "Corvinal",
+      "Brasao": "Águia",
+      "Nome_Fundador": "Rowena Ravenclaw",
+      "Nascimento_Fundador": "0990-03-10",
+      "CPF_Prof": "33333333333"
+    }
+  },
+  {
+    "cpf": "99999999999",
+    "nome": "Cedrico Diggory",
+    "sangue": "Puro",
+    "ano_ingresso": 1990,
+    "cpf_monitor": null,
+    "qi": 125,
+    "companheirismo": 80,
+    "ambicao": 70,
+    "heroismo": 85,
+    "casa": {
+      "ID": 4,
+      "Nome": "Lufa-Lufa",
+      "Brasao": "Texugo",
+      "Nome_Fundador": "Helga Hufflepuff",
+      "Nascimento_Fundador": "0985-08-05",
+      "CPF_Prof": "44444444444"
+    }
+  },
+  {
+    "cpf": "10101010101",
+    "nome": "Cho Chang",
+    "sangue": "Mestiço",
+    "ano_ingresso": 1990,
+    "cpf_monitor": "88888888888",
+    "qi": 130,
+    "companheirismo": 70,
+    "ambicao": 55,
+    "heroismo": 60,
+    "casa": {
+      "ID": 3,
+      "Nome": "Corvinal",
+      "Brasao": "Águia",
+      "Nome_Fundador": "Rowena Ravenclaw",
+      "Nascimento_Fundador": "0990-03-10",
+      "CPF_Prof": "33333333333"
+    }
+  },
+  {
+    "cpf": "12121212121",
+    "nome": "Millicent Bulstrode",
+    "sangue": "Puro",
+    "ano_ingresso": 1991,
+    "cpf_monitor": "77777777777",
+    "qi": 105,
+    "companheirismo": 50,
+    "ambicao": 85,
+    "heroismo": 40,
+    "casa": {
+      "ID": 2,
+      "Nome": "Sonserina",
+      "Brasao": "Serpente",
+      "Nome_Fundador": "Salazar Slytherin",
+      "Nascimento_Fundador": "0995-06-15",
+      "CPF_Prof": "22222222222"
+    }
+  },
+  {
+    "cpf": "13131313131",
+    "nome": "Susan Bones",
+    "sangue": "Mestiço",
+    "ano_ingresso": 1991,
+    "cpf_monitor": "99999999999",
+    "qi": 115,
+    "companheirismo": 75,
+    "ambicao": 65,
+    "heroismo": 60,
+    "casa": {
+      "ID": 4,
+      "Nome": "Lufa-Lufa",
+      "Brasao": "Texugo",
+      "Nome_Fundador": "Helga Hufflepuff",
+      "Nascimento_Fundador": "0985-08-05",
+      "CPF_Prof": "44444444444"
+    }
+  },
+  {
+    "cpf": "14141414141",
+    "nome": "Neville Longbottom",
+    "sangue": "Puro",
+    "ano_ingresso": 1991,
+    "cpf_monitor": null,
+    "qi": 95,
+    "companheirismo": 80,
+    "ambicao": 40,
+    "heroismo": 70,
+    "casa": {
+      "ID": 4,
+      "Nome": "Lufa-Lufa",
+      "Brasao": "Texugo",
+      "Nome_Fundador": "Helga Hufflepuff",
+      "Nascimento_Fundador": "0985-08-05",
+      "CPF_Prof": "44444444444"
+    }
+  },
+  {
+    "cpf": "15151515151",
+    "nome": "Fred Weasley",
+    "sangue": "Puro",
+    "ano_ingresso": 1990,
+    "cpf_monitor": null,
+    "qi": 115,
+    "companheirismo": 85,
+    "ambicao": 70,
+    "heroismo": 85,
+    "casa": {
+      "ID": 1,
+      "Nome": "Grifinória",
+      "Brasao": "Leão",
+      "Nome_Fundador": "Godric Gryffindor",
+      "Nascimento_Fundador": "1000-01-01",
+      "CPF_Prof": "11111111111"
+    }
+  },
+  {
+    "cpf": "16161616161",
+    "nome": "George Weasley",
+    "sangue": "Puro",
+    "ano_ingresso": 1990,
+    "cpf_monitor": null,
+    "qi": 113,
+    "companheirismo": 80,
+    "ambicao": 75,
+    "heroismo": 85,
+    "casa": {
+      "ID": 1,
+      "Nome": "Grifinória",
+      "Brasao": "Leão",
+      "Nome_Fundador": "Godric Gryffindor",
+      "Nascimento_Fundador": "1000-01-01",
+      "CPF_Prof": "11111111111"
+    }
+  },
+  {
+    "cpf": "17171717171",
+    "nome": "Pansy Parkinson",
+    "sangue": "Puro",
+    "ano_ingresso": 1992,
+    "cpf_monitor": null,
+    "qi": 100,
+    "companheirismo": 40,
+    "ambicao": 90,
+    "heroismo": 30,
+    "casa": {
+      "ID": 2,
+      "Nome": "Sonserina",
+      "Brasao": "Serpente",
+      "Nome_Fundador": "Salazar Slytherin",
+      "Nascimento_Fundador": "0995-06-15",
+      "CPF_Prof": "22222222222"
+    }
+  }
+]
